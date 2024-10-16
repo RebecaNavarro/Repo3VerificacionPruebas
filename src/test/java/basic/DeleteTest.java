@@ -78,7 +78,6 @@ public class DeleteTest {
         // click  [edit]
         chrome.findElement(By.xpath("//ul[contains(@style,\"block;\")]//a[text()='Delete']")).click();
 
-        // handle the alert
         chrome.switchTo().alert().accept();
 
     }
