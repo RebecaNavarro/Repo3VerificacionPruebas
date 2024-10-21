@@ -12,6 +12,7 @@ public class LoginTest extends BaseTestTodoLy{
         loginSection.loginButton.click();
         Assertions.assertTrue(menuSection.logoutButton.isControlDislayed(),
                 "ERROR! the login was failed");
-
     }
+
+
 }

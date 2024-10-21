@@ -23,7 +23,7 @@ public class UpdateProjectTest extends  BaseTestTodoLy{
         projectLeftSection.saveIcon.click();
 
         Assertions.assertEquals(newName,projectLeftSection.getProjectLabel(newName).getText(),
-                "ERROR! the project was not updated" );
+               "ERROR! the project was not updated" );
 
     }
 

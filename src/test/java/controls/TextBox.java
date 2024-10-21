@@ -24,4 +24,3 @@ public class TextBox extends Control{
         this.control.sendKeys(value+ Keys.ENTER);
     }
 }
-

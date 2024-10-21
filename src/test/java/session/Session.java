@@ -2,7 +2,6 @@ package session;
 
 import factoryBrowser.FactoryBrowser;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class Session {
     // atributo del mismo tipo de la clase
