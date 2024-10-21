@@ -4,21 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e318dbc-4621-41c8-a296-dea2270e5de9" name="Changes" comment="commit con cambios que no debo subir">
-      <change afterPath="$PROJECT_DIR$/src/test/java/pages/todoly/ProfileSection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/pages/todoly/SettingsSection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/testSuite/UpdateFullNameTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/todoly/LoginSection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/todoly/MainPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/todoly/MenuSection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/todoly/ProjectLeftSection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/todoly/SubMenuOptionSection.java" afterDir="false" />
+    <list default="true" id="3e318dbc-4621-41c8-a296-dea2270e5de9" name="Changes" comment="commit tarea del update full name (actualiza pero la verificación no funciona, no se por que)">
+      <change afterPath="$PROJECT_DIR$/src/test/java/pages/todoist/MainPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/todoist/BaseTestTodoist.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/todoist/LoginTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/controls/TextBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/controls/TextBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/session/Session.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/session/Session.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/testSuite/BaseTestTodoLy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/testSuite/BaseTestTodoLy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/testSuite/LoginTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/testSuite/LoginTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/testSuite/UpdateProjectTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/testSuite/UpdateProjectTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/pages/todoly/MainPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pages/todoly/MainPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/todoly/LoginSection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pages/todoist/LoginSection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/todoly/MainPage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/todoly/MenuSection.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/todoly/ProjectLeftSection.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/todoly/SubMenuOptionSection.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +56,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="TareaUpdateName" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -82,6 +78,7 @@
   "keyToString": {
     "Gradle.Build TercerProyectoQA.executor": "Run",
     "Gradle.CreateTest.executor": "Run",
+    "Gradle.LoginTest (1).executor": "Run",
     "Gradle.LoginTest.executor": "Run",
     "Gradle.SeleniumTest.executor": "Run",
     "Gradle.UpdateFullNameTest.executor": "Run",
@@ -89,7 +86,7 @@
     "Gradle.UpdateTest.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "TareaUpdateName",
+    "git-widget-placeholder": "TareaTodoist",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/BECA/Documents/UPB/IDE/IntelliJ/VerificacionPruebas/TercerProyectoQA/src/test/java",
     "node.js.detected.package.eslint": "true",
@@ -108,10 +105,12 @@
       <recent name="C:\Users\BECA\Documents\UPB\IDE\IntelliJ\VerificacionPruebas\TercerProyectoQA\src\test\resources\chrome" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="pages.todoist" />
+      <recent name="todoist" />
       <recent name="basic" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.UpdateFullNameTest">
+  <component name="RunManager" selected="Gradle.LoginTest (1)">
     <configuration name="CreateTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -136,6 +135,30 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="LoginTest (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;todoist.LoginTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="LoginTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -150,30 +173,6 @@
             <option value=":test" />
             <option value="--tests" />
             <option value="&quot;basic.LoginTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="SeleniumTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;basic.SeleniumTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -234,11 +233,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.LoginTest (1)" />
         <item itemvalue="Gradle.UpdateFullNameTest" />
         <item itemvalue="Gradle.UpdateTest" />
         <item itemvalue="Gradle.CreateTest" />
         <item itemvalue="Gradle.LoginTest" />
-        <item itemvalue="Gradle.SeleniumTest" />
       </list>
     </recent_temporary>
   </component>
@@ -261,7 +260,7 @@
       <workItem from="1728939477185" duration="2858000" />
       <workItem from="1729002360330" duration="84000" />
       <workItem from="1729002465927" duration="6650000" />
-      <workItem from="1729524978869" duration="6393000" />
+      <workItem from="1729524978869" duration="11120000" />
     </task>
     <task id="LOCAL-00001" summary="commit con cambios que no debo subir">
       <option name="closed" value="true" />
@@ -271,7 +270,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729525007441</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="commit tarea del update full name (actualiza pero la verificación no funciona, no se por que)">
+      <option name="closed" value="true" />
+      <created>1729531554085</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1729531554085</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -279,6 +286,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="commit con cambios que no debo subir" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit con cambios que no debo subir" />
+    <MESSAGE value="commit tarea del update full name (actualiza pero la verificación no funciona, no se por que)" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit tarea del update full name (actualiza pero la verificación no funciona, no se por que)" />
   </component>
 </project>
