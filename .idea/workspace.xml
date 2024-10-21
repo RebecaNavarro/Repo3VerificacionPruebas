@@ -4,23 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e318dbc-4621-41c8-a296-dea2270e5de9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/basic/CreateTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/basic/LoginTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/basic/SeleniumTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/basic/UpdateTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/chrome/chromedriver.exe" afterDir="false" />
+    <list default="true" id="3e318dbc-4621-41c8-a296-dea2270e5de9" name="Changes" comment="Ejercicio delete usando la alerta">
+      <change afterPath="$PROJECT_DIR$/src/test/java/controls/Button.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/controls/Control.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/controls/Icon.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/controls/Label.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/controls/TextBox.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/factoryBrowser/Chrome.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/factoryBrowser/Edge.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/factoryBrowser/FactoryBrowser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/factoryBrowser/Firefox.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/factoryBrowser/IBrowser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/pages/todoly/LoginSection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/pages/todoly/MainPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/pages/todoly/MenuSection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/pages/todoly/ProjectLeftSection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/pages/todoly/SubMenuOptionSection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/session/Session.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/testSuite/BaseTestTodoLy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/testSuite/CreateProjectTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/testSuite/LoginTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/testSuite/UpdateProjectTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/basic/UpdateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/basic/UpdateTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,25 +77,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.Build TercerProyectoQA.executor": "Run",
-    "Gradle.CreateTest.executor": "Run",
-    "Gradle.LoginTest.executor": "Run",
-    "Gradle.SeleniumTest.executor": "Run",
-    "Gradle.UpdateTest.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.Build TercerProyectoQA.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CreateTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.LoginTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.SeleniumTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.UpdateTest.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\BECA\Documents\UPB\IDE\IntelliJ\VerificacionPruebas\TercerProyectoQA\src\test\resources\chrome" />

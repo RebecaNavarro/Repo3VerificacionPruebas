@@ -1,0 +1,457 @@
+Index: src/test/java/basic/UpdateTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package basic;\r\n\r\nimport org.junit.jupiter.api.*;\r\nimport org.openqa.selenium.By;\r\nimport org.openqa.selenium.WebDriver;\r\nimport org.openqa.selenium.WebElement;\r\nimport org.openqa.selenium.chrome.ChromeDriver;\r\nimport org.openqa.selenium.interactions.Actions;\r\n\r\nimport java.time.Duration;\r\n\r\npublic class UpdateTest {\r\n\r\n    WebDriver chrome;\r\n    @BeforeEach\r\n    public void openBrowser(){\r\n        System.setProperty(\"webdriver.chrome.driver\",\"src/test/resources/chrome/chromedriver.exe\");\r\n        chrome = new ChromeDriver();\r\n        chrome.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));\r\n        chrome.manage().window().maximize();\r\n        chrome.get(\"https://todo.ly/\");\r\n\r\n    }\r\n\r\n    @AfterEach\r\n    public void closeBrowser(){\r\n        chrome.quit();\r\n    }\r\n\r\n    @Test\r\n    @DisplayName(\"Verify update project test is successfully\")\r\n    public void verifyAddNewProject() throws InterruptedException {\r\n        chrome.findElement(By.xpath(\"//img[@src=\\\"/Images/design/pagelogin.png\\\"]\")).click();\r\n        chrome.findElement(By.id(\"ctl00_MainContent_LoginControl1_TextBoxEmail\")).sendKeys(\"selenium123@123.com\");\r\n        chrome.findElement(By.id(\"ctl00_MainContent_LoginControl1_TextBoxPassword\")).sendKeys(\"12345\");\r\n        chrome.findElement(By.id(\"ctl00_MainContent_LoginControl1_ButtonLogin\")).click();\r\n\r\n        // verification\r\n        Assertions.assertTrue(chrome.findElements(By.id(\"ctl00_HeaderTopControl1_LinkButtonLogout\")).size() ==1,\r\n                \"ERROR! nose pudo iniciar sesion\");\r\n\r\n        Thread.sleep(3000);\r\n\r\n        chrome.findElement(By.className(\"AddProjectLiDiv\")).click();\r\n        chrome.findElement(By.id(\"NewProjNameInput\")).sendKeys(\"Para actualizar\");\r\n        chrome.findElement(By.id(\"NewProjNameButton\")).click();\r\n\r\n        Thread.sleep(2000);\r\n\r\n        Assertions.assertTrue(chrome.findElement(By.className(\"CurrentProjectTitle\")).getText().contains(\"Para actualizar\"),\r\n                \"ERROR! No se pudo crear el proyecto\");\r\n\r\n//        chrome.findElement(By.xpath(\"//img[@src=\\\"/Images/dropdown.png\\\"]\")).click();\r\n//        chrome.findElement(By.xpath(\"//li[@class='edit']/a\")).click();\r\n//\r\n//        Thread.sleep(2000);\r\n//\r\n//        chrome.findElement(By.id(\"ItemEditTextbox\")).clear();\r\n//        chrome.findElement(By.id(\"ItemEditTextbox\")).sendKeys(\"Actualizado\");\r\n//\r\n//        chrome.findElement(By.xpath(\"//img[@title='Save']\")).click();\r\n//\r\n//        Thread.sleep(2000);\r\n//\r\n//        Assertions.assertTrue(chrome.findElement(By.className(\"CurrentProjectTitle\")).getText().contains(\"Actualizado\"),\r\n//                \"ERROR! No se pudo actualizar el nombre del proyecto\");\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/basic/UpdateTest.java b/src/test/java/basic/UpdateTest.java
+--- a/src/test/java/basic/UpdateTest.java	(revision 2ab6f5333c66d443911b0eb8cdab82862e894852)
++++ b/src/test/java/basic/UpdateTest.java	(date 1729029967085)
+@@ -3,14 +3,14 @@
+ import org.junit.jupiter.api.*;
+ import org.openqa.selenium.By;
+ import org.openqa.selenium.WebDriver;
+-import org.openqa.selenium.WebElement;
+ import org.openqa.selenium.chrome.ChromeDriver;
+-import org.openqa.selenium.interactions.Actions;
+ 
+ import java.time.Duration;
++import java.util.Date;
+ 
+ public class UpdateTest {
+ 
++
+     WebDriver chrome;
+     @BeforeEach
+     public void openBrowser(){
+@@ -19,7 +19,6 @@
+         chrome.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+         chrome.manage().window().maximize();
+         chrome.get("https://todo.ly/");
+-
+     }
+ 
+     @AfterEach
+@@ -28,42 +27,47 @@
+     }
+ 
+     @Test
+-    @DisplayName("Verify update project test is successfully")
+-    public void verifyAddNewProject() throws InterruptedException {
++    @DisplayName("Verify create update project")
++    public void verifyCreateUpdateProject() throws InterruptedException {
+         chrome.findElement(By.xpath("//img[@src=\"/Images/design/pagelogin.png\"]")).click();
+         chrome.findElement(By.id("ctl00_MainContent_LoginControl1_TextBoxEmail")).sendKeys("selenium123@123.com");
+         chrome.findElement(By.id("ctl00_MainContent_LoginControl1_TextBoxPassword")).sendKeys("12345");
+         chrome.findElement(By.id("ctl00_MainContent_LoginControl1_ButtonLogin")).click();
+-
+         // verification
+         Assertions.assertTrue(chrome.findElements(By.id("ctl00_HeaderTopControl1_LinkButtonLogout")).size() ==1,
+                 "ERROR! nose pudo iniciar sesion");
+ 
+-        Thread.sleep(3000);
+-
+-        chrome.findElement(By.className("AddProjectLiDiv")).click();
+-        chrome.findElement(By.id("NewProjNameInput")).sendKeys("Para actualizar");
++        // create project
++        // click add new project
++        String nameProject = "UPB"+new Date().getTime();
++        chrome.findElement(By.xpath("//td[text()='Add New Project']")).click();
++        // set project name
++        chrome.findElement(By.id("NewProjNameInput")).sendKeys(nameProject);
++        // click add
+         chrome.findElement(By.id("NewProjNameButton")).click();
+ 
+-        Thread.sleep(2000);
++        // verification
++        String expectedResult=nameProject;
++        String actualResult=chrome.findElement(By.xpath("//li[last()]//td[text()='"+nameProject+"'] ")).getText();
++        Assertions.assertEquals(expectedResult,actualResult,"ERROR the project was not created successfully");
+ 
+-        Assertions.assertTrue(chrome.findElement(By.className("CurrentProjectTitle")).getText().contains("Para actualizar"),
+-                "ERROR! No se pudo crear el proyecto");
++        // update project
++        //select project created
++        chrome.findElement(By.xpath("//li[last()]//td[text()='"+nameProject+"'] ")).click();
++        // click menu icon
++        chrome.findElement(By.xpath("//div[@style=\"display: block;\"]/img")).click();
++        // click  [edit]
++        chrome.findElement(By.xpath("//ul[contains(@style,\"block;\")]//a[text()='Edit']")).click();
++        // set new project name
++        String nameProjectUpdated = "BOL"+new Date().getTime();
++        chrome.findElement(By.xpath("//input[@id='ItemEditTextbox' and @style]")).clear();
++        chrome.findElement(By.xpath("//input[@id='ItemEditTextbox' and @style]")).sendKeys(nameProjectUpdated);
++        // click  [save] icon
++        chrome.findElement(By.xpath("//img[@id=\"ItemEditSubmit\" and @itemid]")).click();
+ 
+-//        chrome.findElement(By.xpath("//img[@src=\"/Images/dropdown.png\"]")).click();
+-//        chrome.findElement(By.xpath("//li[@class='edit']/a")).click();
+-//
+-//        Thread.sleep(2000);
+-//
+-//        chrome.findElement(By.id("ItemEditTextbox")).clear();
+-//        chrome.findElement(By.id("ItemEditTextbox")).sendKeys("Actualizado");
+-//
+-//        chrome.findElement(By.xpath("//img[@title='Save']")).click();
+-//
+-//        Thread.sleep(2000);
+-//
+-//        Assertions.assertTrue(chrome.findElement(By.className("CurrentProjectTitle")).getText().contains("Actualizado"),
+-//                "ERROR! No se pudo actualizar el nombre del proyecto");
+-
++        // verification
++        expectedResult=nameProjectUpdated;
++        actualResult=chrome.findElement(By.xpath("//li[last()]//td[text()='"+nameProjectUpdated+"'] ")).getText();
++        Assertions.assertEquals(expectedResult,actualResult,"ERROR the project was not created successfully");
+     }
+ }
+Index: src/test/java/controls/Label.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/controls/Label.java b/src/test/java/controls/Label.java
+new file mode 100644
+--- /dev/null	(date 1729031778812)
++++ b/src/test/java/controls/Label.java	(date 1729031778812)
+@@ -0,0 +1,9 @@
++package controls;
++
++import org.openqa.selenium.By;
++
++public class Label extends Control{
++    public Label(By locator) {
++        super(locator);
++    }
++}
+Index: src/test/java/controls/Button.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/controls/Button.java b/src/test/java/controls/Button.java
+new file mode 100644
+--- /dev/null	(date 1729031769002)
++++ b/src/test/java/controls/Button.java	(date 1729031769002)
+@@ -0,0 +1,9 @@
++package controls;
++
++import org.openqa.selenium.By;
++
++public class Button extends Control{
++    public Button(By locator) {
++        super(locator);
++    }
++}
+Index: src/test/java/controls/TextBox.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/controls/TextBox.java b/src/test/java/controls/TextBox.java
+new file mode 100644
+--- /dev/null	(date 1729031675380)
++++ b/src/test/java/controls/TextBox.java	(date 1729031675380)
+@@ -0,0 +1,27 @@
++package controls;
++
++import org.openqa.selenium.By;
++import org.openqa.selenium.Keys;
++
++public class TextBox extends Control{
++    public TextBox(By locator) {
++        super(locator);
++    }
++
++    public void setText(String value){
++        this.findControl();
++        this.control.sendKeys(value);
++    }
++
++    public void clearSetText(String value){
++        this.findControl();
++        this.control.clear();
++        this.control.sendKeys(value);
++    }
++
++    public void setTextEnter(String value){
++        this.findControl();
++        this.control.sendKeys(value+ Keys.ENTER);
++    }
++}
++
+Index: src/test/java/factoryBrowser/IBrowser.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/factoryBrowser/IBrowser.java b/src/test/java/factoryBrowser/IBrowser.java
+new file mode 100644
+--- /dev/null	(date 1729030560373)
++++ b/src/test/java/factoryBrowser/IBrowser.java	(date 1729030560373)
+@@ -0,0 +1,7 @@
++package factoryBrowser;
++
++import org.openqa.selenium.WebDriver;
++
++public interface IBrowser {
++    WebDriver create();
++}
+Index: src/test/java/session/Session.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/session/Session.java b/src/test/java/session/Session.java
+new file mode 100644
+--- /dev/null	(date 1729031569969)
++++ b/src/test/java/session/Session.java	(date 1729031569969)
+@@ -0,0 +1,31 @@
++package session;
++
++import factoryBrowser.FactoryBrowser;
++import org.openqa.selenium.WebDriver;
++import org.openqa.selenium.WebElement;
++
++public class Session {
++    // atributo del mismo tipo de la clase
++    private static Session session = null;
++    private WebDriver browser;
++    // constructor privado
++    private Session(){
++        //todo -- read from property file
++        browser = FactoryBrowser.make("chrome").create();
++    }
++    // metodo de acceso global publico
++    public static Session getInstance(){
++        if (session == null)
++            session = new Session();
++        return session;
++    }
++
++    public void closeSession(){
++        browser.quit();
++        session=null;
++    }
++
++    public WebDriver getBrowser() {
++        return browser;
++    }
++}
+Index: src/test/java/factoryBrowser/Firefox.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/factoryBrowser/Firefox.java b/src/test/java/factoryBrowser/Firefox.java
+new file mode 100644
+--- /dev/null	(date 1729030604534)
++++ b/src/test/java/factoryBrowser/Firefox.java	(date 1729030604534)
+@@ -0,0 +1,10 @@
++package factoryBrowser;
++
++import org.openqa.selenium.WebDriver;
++
++public class Firefox implements IBrowser{
++    @Override
++    public WebDriver create() {
++        return null;
++    }
++}
+Index: src/test/java/factoryBrowser/Edge.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/factoryBrowser/Edge.java b/src/test/java/factoryBrowser/Edge.java
+new file mode 100644
+--- /dev/null	(date 1729030591524)
++++ b/src/test/java/factoryBrowser/Edge.java	(date 1729030591524)
+@@ -0,0 +1,10 @@
++package factoryBrowser;
++
++import org.openqa.selenium.WebDriver;
++
++public class Edge implements IBrowser{
++    @Override
++    public WebDriver create() {
++        return null;
++    }
++}
+Index: src/test/java/factoryBrowser/Chrome.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/factoryBrowser/Chrome.java b/src/test/java/factoryBrowser/Chrome.java
+new file mode 100644
+--- /dev/null	(date 1729030578082)
++++ b/src/test/java/factoryBrowser/Chrome.java	(date 1729030578082)
+@@ -0,0 +1,17 @@
++package factoryBrowser;
++
++import org.openqa.selenium.WebDriver;
++import org.openqa.selenium.chrome.ChromeDriver;
++
++import java.time.Duration;
++
++public class Chrome implements IBrowser{
++    @Override
++    public WebDriver create() {
++        System.setProperty("webdriver.chrome.driver","src/test/resources/chrome/chromedriver.exe");
++        WebDriver chrome = new ChromeDriver();
++        chrome.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
++        chrome.manage().window().maximize();
++        return chrome;
++    }
++}
+Index: src/test/java/controls/Control.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/controls/Control.java b/src/test/java/controls/Control.java
+new file mode 100644
+--- /dev/null	(date 1729032086815)
++++ b/src/test/java/controls/Control.java	(date 1729032086815)
+@@ -0,0 +1,37 @@
++package controls;
++
++import org.openqa.selenium.By;
++import org.openqa.selenium.WebElement;
++import session.Session;
++
++public class Control {
++    protected By locator;
++    protected WebElement control;
++
++    public Control(By locator){
++        this.locator = locator;
++    }
++
++    protected void findControl(){
++        this.control = Session.getInstance().getBrowser().findElement(this.locator);
++    }
++
++    public void click(){
++        this.findControl();
++        this.control.click();
++    }
++    public boolean isControlDislayed(){
++        try {
++            this.findControl();
++            return this.control.isDisplayed();
++        }catch (Exception e){
++            return false;
++        }
++    }
++
++    public String getText(){
++        this.findControl();
++        return control.getText();
++    }
++
++}
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"3e318dbc-4621-41c8-a296-dea2270e5de9\" name=\"Changes\" comment=\"Ejercicio login con firefox\">\r\n      <change afterPath=\"$PROJECT_DIR$/src/test/java/basic/DeleteTest.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/test/java/controls/Button.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/test/java/controls/Control.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/test/java/controls/Label.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/test/java/controls/TextBox.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/test/java/factoryBrowser/Chrome.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/test/java/factoryBrowser/Edge.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/test/java/factoryBrowser/FactoryBrowser.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/test/java/factoryBrowser/Firefox.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/test/java/factoryBrowser/IBrowser.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/test/java/session/Session.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/test/java/basic/UpdateTest.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/test/java/basic/UpdateTest.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ExternalProjectsData\">\r\n    <projectState path=\"$PROJECT_DIR$\">\r\n      <ProjectState />\r\n    </projectState>\r\n  </component>\r\n  <component name=\"ExternalProjectsManager\">\r\n    <system id=\"GRADLE\">\r\n      <state>\r\n        <task path=\"$PROJECT_DIR$\">\r\n          <activation />\r\n        </task>\r\n        <projects_view>\r\n          <tree_state>\r\n            <expand>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"TercerProyectoQA\" type=\"f1a62948:ProjectNode\" />\r\n              </path>\r\n            </expand>\r\n            <select />\r\n          </tree_state>\r\n        </projects_view>\r\n      </state>\r\n    </system>\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Interface\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"TareaFirefox\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;customColor&quot;: &quot;&quot;,\r\n  &quot;associatedIndex&quot;: 2\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2nRckvFzEoIf1QTRARhQECgZIt6\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Gradle.Build TercerProyectoQA.executor\": \"Run\",\r\n    \"Gradle.CreateTest.executor\": \"Run\",\r\n    \"Gradle.DeleteTest.executor\": \"Run\",\r\n    \"Gradle.LoginTest (1).executor\": \"Run\",\r\n    \"Gradle.LoginTest.executor\": \"Run\",\r\n    \"Gradle.SeleniumTest.executor\": \"Run\",\r\n    \"Gradle.UpdateTest.executor\": \"Run\",\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"git-widget-placeholder\": \"TareaDelete\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\BECA\\Documents\\UPB\\IDE\\IntelliJ\\VerificacionPruebas\\TercerProyectoQA\\src\\test\\resources\\firefox\" />\r\n      <recent name=\"C:\\Users\\BECA\\Documents\\UPB\\IDE\\IntelliJ\\VerificacionPruebas\\TercerProyectoQA\\src\\test\\resources\\chrome\" />\r\n    </key>\r\n    <key name=\"CopyClassDialog.RECENTS_KEY\">\r\n      <recent name=\"basic\" />\r\n      <recent name=\"firefox\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Gradle.DeleteTest\">\r\n    <configuration name=\"CreateTest\" type=\"GradleRunConfiguration\" factoryName=\"Gradle\" temporary=\"true\">\r\n      <ExternalSystemSettings>\r\n        <option name=\"executionName\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"externalSystemIdString\" value=\"GRADLE\" />\r\n        <option name=\"scriptParameters\" value=\"\" />\r\n        <option name=\"taskDescriptions\">\r\n          <list />\r\n        </option>\r\n        <option name=\"taskNames\">\r\n          <list>\r\n            <option value=\":test\" />\r\n            <option value=\"--tests\" />\r\n            <option value=\"&quot;basic.CreateTest&quot;\" />\r\n          </list>\r\n        </option>\r\n        <option name=\"vmOptions\" />\r\n      </ExternalSystemSettings>\r\n      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>\r\n      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>\r\n      <DebugAllEnabled>false</DebugAllEnabled>\r\n      <RunAsTest>true</RunAsTest>\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"DeleteTest\" type=\"GradleRunConfiguration\" factoryName=\"Gradle\" temporary=\"true\">\r\n      <ExternalSystemSettings>\r\n        <option name=\"executionName\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"externalSystemIdString\" value=\"GRADLE\" />\r\n        <option name=\"scriptParameters\" value=\"\" />\r\n        <option name=\"taskDescriptions\">\r\n          <list />\r\n        </option>\r\n        <option name=\"taskNames\">\r\n          <list>\r\n            <option value=\":test\" />\r\n            <option value=\"--tests\" />\r\n            <option value=\"&quot;basic.DeleteTest&quot;\" />\r\n          </list>\r\n        </option>\r\n        <option name=\"vmOptions\" />\r\n      </ExternalSystemSettings>\r\n      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>\r\n      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>\r\n      <DebugAllEnabled>false</DebugAllEnabled>\r\n      <RunAsTest>true</RunAsTest>\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"LoginTest (1)\" type=\"GradleRunConfiguration\" factoryName=\"Gradle\" temporary=\"true\">\r\n      <ExternalSystemSettings>\r\n        <option name=\"executionName\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"externalSystemIdString\" value=\"GRADLE\" />\r\n        <option name=\"scriptParameters\" value=\"\" />\r\n        <option name=\"taskDescriptions\">\r\n          <list />\r\n        </option>\r\n        <option name=\"taskNames\">\r\n          <list>\r\n            <option value=\":test\" />\r\n            <option value=\"--tests\" />\r\n            <option value=\"&quot;firefox.LoginTest&quot;\" />\r\n          </list>\r\n        </option>\r\n        <option name=\"vmOptions\" />\r\n      </ExternalSystemSettings>\r\n      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>\r\n      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>\r\n      <DebugAllEnabled>false</DebugAllEnabled>\r\n      <RunAsTest>true</RunAsTest>\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"LoginTest\" type=\"GradleRunConfiguration\" factoryName=\"Gradle\" temporary=\"true\">\r\n      <ExternalSystemSettings>\r\n        <option name=\"executionName\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"externalSystemIdString\" value=\"GRADLE\" />\r\n        <option name=\"scriptParameters\" value=\"\" />\r\n        <option name=\"taskDescriptions\">\r\n          <list />\r\n        </option>\r\n        <option name=\"taskNames\">\r\n          <list>\r\n            <option value=\":test\" />\r\n            <option value=\"--tests\" />\r\n            <option value=\"&quot;basic.LoginTest&quot;\" />\r\n          </list>\r\n        </option>\r\n        <option name=\"vmOptions\" />\r\n      </ExternalSystemSettings>\r\n      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>\r\n      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>\r\n      <DebugAllEnabled>false</DebugAllEnabled>\r\n      <RunAsTest>true</RunAsTest>\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"UpdateTest\" type=\"GradleRunConfiguration\" factoryName=\"Gradle\" temporary=\"true\">\r\n      <ExternalSystemSettings>\r\n        <option name=\"executionName\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"externalSystemIdString\" value=\"GRADLE\" />\r\n        <option name=\"scriptParameters\" value=\"\" />\r\n        <option name=\"taskDescriptions\">\r\n          <list />\r\n        </option>\r\n        <option name=\"taskNames\">\r\n          <list>\r\n            <option value=\":test\" />\r\n            <option value=\"--tests\" />\r\n            <option value=\"&quot;basic.UpdateTest&quot;\" />\r\n          </list>\r\n        </option>\r\n        <option name=\"vmOptions\" />\r\n      </ExternalSystemSettings>\r\n      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>\r\n      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>\r\n      <DebugAllEnabled>false</DebugAllEnabled>\r\n      <RunAsTest>true</RunAsTest>\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Gradle.DeleteTest\" />\r\n        <item itemvalue=\"Gradle.UpdateTest\" />\r\n        <item itemvalue=\"Gradle.LoginTest (1)\" />\r\n        <item itemvalue=\"Gradle.CreateTest\" />\r\n        <item itemvalue=\"Gradle.LoginTest\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"jdk-17.0.10-corretto-17.0.10-4caba194b151-5cd809f4\" />\r\n        <option value=\"jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"3e318dbc-4621-41c8-a296-dea2270e5de9\" name=\"Changes\" comment=\"\" />\r\n      <created>1728939476149</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1728939476149</updated>\r\n      <workItem from=\"1728939477185\" duration=\"2858000\" />\r\n      <workItem from=\"1729002360330\" duration=\"84000\" />\r\n      <workItem from=\"1729002465927\" duration=\"6999000\" />\r\n      <workItem from=\"1729009582059\" duration=\"56000\" />\r\n      <workItem from=\"1729024941260\" duration=\"6409000\" />\r\n      <workItem from=\"1729092312050\" duration=\"373000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Ejercicio de crear completo y el de actualizar falta\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1729009412736</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1729009412736</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Ejercicio login con firefox\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1729036321451</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1729036321451</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"3\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Ejercicio de crear completo y el de actualizar falta\" />\r\n    <MESSAGE value=\"Ejercicio login con firefox\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Ejercicio login con firefox\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 2ab6f5333c66d443911b0eb8cdab82862e894852)
++++ b/.idea/workspace.xml	(date 1729093048054)
+@@ -4,8 +4,7 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="3e318dbc-4621-41c8-a296-dea2270e5de9" name="Changes" comment="Ejercicio login con firefox">
+-      <change afterPath="$PROJECT_DIR$/src/test/java/basic/DeleteTest.java" afterDir="false" />
++    <list default="true" id="3e318dbc-4621-41c8-a296-dea2270e5de9" name="Changes" comment="Ejercicio delete usando la alerta">
+       <change afterPath="$PROJECT_DIR$/src/test/java/controls/Button.java" afterDir="false" />
+       <change afterPath="$PROJECT_DIR$/src/test/java/controls/Control.java" afterDir="false" />
+       <change afterPath="$PROJECT_DIR$/src/test/java/controls/Label.java" afterDir="false" />
+@@ -16,7 +15,6 @@
+       <change afterPath="$PROJECT_DIR$/src/test/java/factoryBrowser/Firefox.java" afterDir="false" />
+       <change afterPath="$PROJECT_DIR$/src/test/java/factoryBrowser/IBrowser.java" afterDir="false" />
+       <change afterPath="$PROJECT_DIR$/src/test/java/session/Session.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/test/java/basic/UpdateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/basic/UpdateTest.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+@@ -258,7 +256,7 @@
+       <workItem from="1729002465927" duration="6999000" />
+       <workItem from="1729009582059" duration="56000" />
+       <workItem from="1729024941260" duration="6409000" />
+-      <workItem from="1729092312050" duration="373000" />
++      <workItem from="1729092312050" duration="733000" />
+     </task>
+     <task id="LOCAL-00001" summary="Ejercicio de crear completo y el de actualizar falta">
+       <option name="closed" value="true" />
+@@ -276,7 +274,23 @@
+       <option name="project" value="LOCAL" />
+       <updated>1729036321451</updated>
+     </task>
+-    <option name="localTasksCounter" value="3" />
++    <task id="LOCAL-00003" summary="Ejercicio delete usando la alerta">
++      <option name="closed" value="true" />
++      <created>1729092909881</created>
++      <option name="number" value="00003" />
++      <option name="presentableId" value="LOCAL-00003" />
++      <option name="project" value="LOCAL" />
++      <updated>1729092909881</updated>
++    </task>
++    <task id="LOCAL-00004" summary="Ejercicio delete usando la alerta">
++      <option name="closed" value="true" />
++      <created>1729093042051</created>
++      <option name="number" value="00004" />
++      <option name="presentableId" value="LOCAL-00004" />
++      <option name="project" value="LOCAL" />
++      <updated>1729093042051</updated>
++    </task>
++    <option name="localTasksCounter" value="5" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -285,6 +299,7 @@
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="Ejercicio de crear completo y el de actualizar falta" />
+     <MESSAGE value="Ejercicio login con firefox" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Ejercicio login con firefox" />
++    <MESSAGE value="Ejercicio delete usando la alerta" />
++    <option name="LAST_COMMIT_MESSAGE" value="Ejercicio delete usando la alerta" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: src/test/java/factoryBrowser/FactoryBrowser.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/factoryBrowser/FactoryBrowser.java b/src/test/java/factoryBrowser/FactoryBrowser.java
+new file mode 100644
+--- /dev/null	(date 1729031096148)
++++ b/src/test/java/factoryBrowser/FactoryBrowser.java	(date 1729031096148)
+@@ -0,0 +1,20 @@
++package factoryBrowser;
++
++public class FactoryBrowser {
++
++    public static IBrowser make(String type){
++        IBrowser browser;
++        switch (type.toLowerCase()){
++            case "firefox":
++                browser = new Firefox();
++                break;
++            case "edge":
++                browser = new Edge();
++                break;
++            default:
++                browser = new Chrome();
++                break;
++        }
++        return browser;
++    }
++}
