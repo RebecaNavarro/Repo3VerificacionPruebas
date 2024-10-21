@@ -14,9 +14,11 @@ public class UpdateFullNameTest extends BaseTestTodoLy {
         loginSection.login("tareaupdate@tarea.com","12345");
         settingsSection.settings();
         profileSection.changeFullName(newName);
+        Thread.sleep(1000);
         settingsSection.settings();
+        Thread.sleep(5000);
 
-        Assertions.assertEquals(newName, profileSection.getFullName(),
+        Assertions.assertEquals(newName, profileSection.fullNameInput.getValue(),
                 "ERROR! The full name was not updated correctly");
     }
 }

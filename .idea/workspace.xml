@@ -5,20 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e318dbc-4621-41c8-a296-dea2270e5de9" name="Changes" comment="commit con cambios que no debo subir">
-      <change afterPath="$PROJECT_DIR$/src/test/java/pages/todoly/ProfileSection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/pages/todoly/SettingsSection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/testSuite/UpdateFullNameTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/todoly/LoginSection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/todoly/MainPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/todoly/MenuSection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/todoly/ProjectLeftSection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/todoly/SubMenuOptionSection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/controls/TextBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/controls/TextBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/session/Session.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/session/Session.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/testSuite/BaseTestTodoLy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/testSuite/BaseTestTodoLy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/testSuite/LoginTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/testSuite/LoginTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/testSuite/UpdateProjectTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/testSuite/UpdateProjectTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/pages/todoly/MenuSection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pages/todoly/MenuSection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/pages/todoly/ProfileSection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pages/todoly/ProfileSection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/testSuite/UpdateFullNameTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/testSuite/UpdateFullNameTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,14 +51,14 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="TareaTodoist" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 2
@@ -78,28 +69,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.Build TercerProyectoQA.executor": "Run",
-    "Gradle.CreateTest.executor": "Run",
-    "Gradle.LoginTest.executor": "Run",
-    "Gradle.SeleniumTest.executor": "Run",
-    "Gradle.UpdateFullNameTest.executor": "Run",
-    "Gradle.UpdateFullNameTest.verifyUpdateFullName.executor": "Debug",
-    "Gradle.UpdateTest.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "TareaUpdateName",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/BECA/Documents/UPB/IDE/IntelliJ/VerificacionPruebas/TercerProyectoQA/src/test/java",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.Build TercerProyectoQA.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CreateTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.LoginTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.SeleniumTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.UpdateFullNameTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.UpdateFullNameTest.verifyUpdateFullName.executor&quot;: &quot;Debug&quot;,
+    &quot;Gradle.UpdateTest.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;TareaUpdateName&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/BECA/Documents/UPB/IDE/IntelliJ/VerificacionPruebas/TercerProyectoQA/src/test/java&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\BECA\Documents\UPB\IDE\IntelliJ\VerificacionPruebas\TercerProyectoQA\src\test\java" />
@@ -236,9 +227,9 @@
       <list>
         <item itemvalue="Gradle.UpdateFullNameTest" />
         <item itemvalue="Gradle.UpdateTest" />
-        <item itemvalue="Gradle.CreateTest" />
-        <item itemvalue="Gradle.LoginTest" />
         <item itemvalue="Gradle.SeleniumTest" />
+        <item itemvalue="Gradle.LoginTest" />
+        <item itemvalue="Gradle.CreateTest" />
       </list>
     </recent_temporary>
   </component>
