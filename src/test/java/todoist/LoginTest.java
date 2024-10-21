@@ -8,11 +8,11 @@ public class LoginTest extends BaseTestTodoist {
     @Test
     public void verifyLoginSuccessfully(){
         mainPage.iniciarSesionButton.click();
-        loginSection.emailTxtBox.setText("rebecanavarros1@upb.edu");
-        loginSection.pwdTxtBox.setText("Hola1234");
+        loginSection.login("rebecanavarros1@upb.edu","Hola1234");
         loginSection.loginButton.click();
-        //Assertions.assertTrue(menuSection.logoutButton.isControlDislayed(),
-          //      "ERROR! the login was failed");
+        menuSection.buttonWithName.click();
+        Assertions.assertTrue(menuSection.buttonWithName.isControlDislayed(),
+                "ERROR! the login was failed");
     }
 
 }
